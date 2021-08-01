@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Title</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+<div id="wholepage">
+
+
+
+<!--  start Add User Side Navigation bar form-->
+    <div id="mySidenav" class="sidenavcustom">
+      <a href="javascript:void(0)" class="closebtnside" onclick="closeNavside()">&times;</a>
+      <form id="slide-form" action="{{ url_for('db_bp.adduser')}}" method="post">
+          <div class="form-group row">
+            <label for="addnewemail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control input-field" id="addnewemail" placeholder="Enter New User Email ID" pattern="[a-z0-9._%+-]+@portofhalifax.com" name="addnewemail" required autofocus>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control input-field" id="inputPassword3" placeholder="Enter New Password" name="addnewpass" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPasswordconfirm" class="col-sm-2 col-form-label"> Confirm Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control input-field" id="inputPasswordconfirm" placeholder="Re-enter New Password" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="addexemail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control input-field" id="addexemail" placeholder="Enter Admin Email ID" name="addexemail" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword4" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control input-field" id="inputPassword4" placeholder="Enter Password For Admin User" name="addexpass" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">CONFIRM ADD</button>
+            </div>
+          </div>
+      </form>
+    </div>
+<!--  End Add User Side Navigation bar form-->
+
+
+<!--  Start ADD user Button-->
+    <div id="mainside" >
+      <input id="aubtn" onclick="openNavside()" type="button" class="waves-effect waves-light btn-large main-button addusrbtn" value="ADD USER" />
+    </div>
+<!--  End ADD user Button-->
+
+
+<!--  Start Main Page-->
+    <div id="mainpage">
+        <h3 class="front-heading">SMART BUOY PREDICTION</h3>
+        <div class="container">
+            <div id = "form-container-id" class=" jumbotron">
+                <div class="row">
+                    <form id="train-form" action="{{ url_for('home_bp.train')}}" method="post" onclick="return false;" class="col-md-4">
+                        <input id="train-btn" class="waves-effect waves-light btn-large main-button land-buttons " data-toggle="modal" data-target="#trainModal" type="submit" name="train" value="Refresh Model" onclick="return false;"/>
+                    </form>
+
+                    <form action="{{ url_for('home_bp.predict')}}" method="post" class="col-md-4">
+                        <input class="waves-effect waves-light btn-large main-button land-buttons" type="submit" name="predict" value="Instant View" />
+                    </form>
+
+
+                    <div class="col-md-4" >
+                    <a href="/dashapp/" class="waves-effect waves-light btn-large main-button land-buttons" >
+                        Graphical View
+                    </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-text">
+                 {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                                <span>Login Status: {{message}}</span>
+                                {% if loginsuccessstatus %}
+                                    <script> $('#train-form').submit(); </script>
+                                {% endif %}
+                        {% endfor %}
+                     {% endif %}
+                 {% endwith %}
+                <span>{{trainframe}}</span><br>
+<!--                {% if predictedValue is defined %}-->
+<!--                    <span>Significant Wave Height : {{sight[0]}}, Range : [ {{lowersight}}, {{uppersight}} ]</span><br>-->
+<!--                    <span>Maximum Wave Height : {{mxwvht[0]}}, Range : [ {{lowermxwvht}}, {{uppermxwvht}} ]</span><br>-->
+<!--                    <span>Wave Period : {{wvprd[0]}}, Range : [ {{lowerwvprd}}, {{upperwvprd}} ]</span><br>-->
+<!--                    <span>Wind Speed : {{wndspd[0]}}, Range : [ {{lowerwndspd}}, {{upperwndspd}} ]</span><br>-->
+<!--                    <span>Prediction Time : {{time[0]}}</span><br>-->
+<!--                    <span>Status : {% if isanomaly %} Alert! Anomaly expected {% else %} Safe {% endif %} </span>-->
+<!--                {% endif%}-->
+                {% if predictedValue is defined %}
+                    <table class="table  table-dark">
+                          <tbody>
+                            <tr>
+                              <th class="zero-border" scope="col"></th>
+                              <th class="zero-border" scope="col">Prediction</th>
+                              <th class="zero-border" scope="col">Probable Lower Value</th>
+                              <th class="zero-border" scope="col">Probable Upper Value</th>
+                            </tr>
+                            <tr>
+                              <th scope="row">Significant Wave Height (m)</th>
+                              <td>{{sight[0]}}</td>
+                              <td>{{lowersight}}</td>
+                              <td>{{uppersight}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Maximum Wave Height (m)</th>
+                              <td>{{mxwvht[0]}}</td>
+                              <td>{{lowermxwvht}}</td>
+                              <td>{{uppermxwvht}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Maximum Wave Period (s)</th>
+                              <td>{{wvprd[0]}}</td>
+                              <td>{{lowerwvprd}}</td>
+                              <td>{{upperwvprd}}</td>
+                            </tr>
+                            <tr >
+                              <th scope="row">Wind Speed (m/s)</th>
+                              <td>{{wndspd[0]}}</td>
+                              <td>{{lowerwndspd}}</td>
+                              <td>{{upperwndspd}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="status">Status</th>
+                              {% if isanomaly %} <td colspan="3" class="anomaly"> Alert! Anomaly expected {% else %} <td colspan="3" class="safe"> Safe {% endif %} </td>
+                            </tr>
+                          </tbody>
+                    </table>
+                {% endif%}
+    <!--            <span>{{actualValue}}</span>-->
+                <span>{{message}}</span>
+                <span>{{status}}</span>
+
+
+            </div>
+        </div>
+    </div>
+<!--  End Main Page-->
+
+        <!--  Start Retrain Modal -->
+    <div class="modal fade" id="trainModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">CAUTION..!!!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <span>Retraining the model takes time and requires login. Also, make sure the supporting buoy data is available.</span>
+            <br><br>
+            <p style="font-weight:900;">Do you still wanna continue?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Continue</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+<!--  End Retrain Modal -->
+
+        <!--  Start login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLongTitle">PLEASE LOGIN</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="login-modal-form" action="{{ url_for('db_bp.login')}}" method="post">
+              <div class="form-group row">
+                  <div class="form-group row">
+                    <label for="inputemailmodal" class="col-sm-2 col-form-label-modal">Email</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control input-field" id="inputemailmodal" placeholder="Enter Email ID" name="loginemail" required  autofocus>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPasswordmodal" class="col-sm-2 col-form-label-modal">Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control input-field" id="inputPasswordmodal" placeholder="Enter Password" name="loginpass" required>
+                    </div>
+                  </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="loginsubmit()" data-toggle="modal" data-target="#statusModal" data-dismiss="modal">CONFIRM IDENTITY</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+<!--  End login Modal -->
+
+
+
+<!--    <div id="dialog-confirm" title="CAUTION..!!!" style="display:none;">-->
+<!--        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Retraining the model takes time and requires login.-->
+
+<!--        </p>-->
+<!--        <p>Also, make sure the supporting buoy data is available.</p>-->
+<!--        <p>Do you still wanna continue?</p>-->
+<!--    </div>-->
+
+<!--    <div id="login-div"  title="Login" style="display:none;">-->
+<!--        <form action="{{ url_for('db_bp.login')}}" id="login-form" method="post">User Name:-->
+<!--            <input type="text" name="uname" />-->
+<!--            <br/>Password:-->
+<!--            <input type="password" name="password" />-->
+<!--        </form>-->
+<!--    </div>-->
+</div>
+</body>
+</html>
+
+
+
+<script>
+$(function(){
+    $( "#dialog-confirm" ).dialog({
+              autoOpen: false,
+              resizable: false,
+              height: "auto",
+              width: 450,
+              modal: true,
+              dialogClass: 'dialog-head',
+              buttons: {
+                "Continue": function() {
+                  $( "#login-div" ).dialog("open")
+                  //$('#train-form').submit();
+                  $( this ).dialog( "close" );
+                },
+                Cancel: function() {
+                  $( this ).dialog( "close" );
+                }
+              }
+            });
+
+    $("#login-div").dialog({
+                          autoOpen: false,
+                          resizable: false,
+                          height: "auto",
+                          width: 450,
+                          modal: true,
+                          buttons:{
+                            "Login Now": function(){
+                                $('#login-form').submit();
+                                $( this ).dialog( "close" );
+
+                            },
+
+                            Cancel: function() {
+                                $( this ).dialog( "close" );
+                            }
+                          }
+                   });
+
+
+
+});
+
+function openNavside() {
+  if($(window).width() > 800 && $(window).width() < 1100){
+        document.getElementById("mySidenav").style.width = "45%";
+        document.getElementById("mainside").style.marginLeft = "45%";
+        document.getElementById("aubtn").style.backgroundColor = "#2bbbad";
+        document.getElementById("aubtn").style.boxShadow = "9px 8px 12px 2px #111315";
+  }
+  else if($(window).width() > 1100){
+        document.getElementById("mySidenav").style.width = "35%";
+        document.getElementById("mainside").style.marginLeft = "35%";
+        document.getElementById("aubtn").style.backgroundColor = "#2bbbad";
+        document.getElementById("aubtn").style.boxShadow = "9px 8px 12px 2px #111315";
+  }
+  else {
+          document.getElementById("mySidenav").style.width = "100%";
+          document.getElementById("mainside").style.marginLeft = "0%";
+          document.getElementById("aubtn").style.opacity = "0";
+  }
+
+  document.getElementById("addnewemail").focus();
+
+
+}
+
+function closeNavside() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mainside").style.marginLeft= "0";
+  document.getElementById("slide-form").reset();
+  document.getElementById("aubtn").style.backgroundColor = null;
+  document.getElementById("aubtn").style.boxShadow = null;
+  document.getElementById("aubtn").style.opacity = null;
+
+}
+
+
+var password = document.getElementById("inputPassword3")
+  , confirm_password = document.getElementById("inputPasswordconfirm");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+$('#loginModal').on('shown.bs.modal', function() {
+  $('#inputunamemodal').focus();
+})
+
+function loginsubmit (){
+    document.getElementById("login-modal-form").submit();
+}
+
+window.onload = function() {
+
+};
+
+
+
+
+
+</script>
+

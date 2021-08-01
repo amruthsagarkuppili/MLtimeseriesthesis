@@ -1,0 +1,328 @@
+body {
+        background-image: url(editedname.png);
+        background-repeat:no-repeat;
+        height: 100%;
+        background-size: 100rem 57rem;
+
+}
+
+@media screen and (max-width: 600px) {
+  body {font-size: 10px;background-size: 60rem 100rem;}
+  .status-text {padding-left: None;padding-right: None;}
+  table{margin-right:5%;}
+}
+
+#mainpage {
+    -webkit-transition: opacity 0.3s;
+    -moz-transition: opacity 0.3s;
+    -o-transition: opacity 0.3s;
+    transition: opacity 2s;
+}
+
+#slide-form {
+    margin: 10%;
+}
+
+
+
+
+
+
+.sidenavcustom {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.7s;
+  padding-top: 60px;
+
+}
+
+
+.sidenavcustom a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.9s;
+}
+
+.sidenavcustom a:hover {
+  color: #f1f1f1;
+}
+
+.sidenavcustom .closebtnside {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+#mainside span {
+        font-size: 18px;
+        color: white;
+        cursor: pointer;
+        padding: 15px 25px 15px 25px;
+        font-weight: 400;
+        background-color: black;
+}
+
+#mainside {
+  margin-top: 20px;
+  transition: margin-left .7s;
+  padding: 16px;
+}
+
+.input-field, .input-field:focus {
+    color: black;
+}
+
+.col-form-label{
+color: #F0F3F4;
+}
+
+#aubtn {
+    transition: opacity .6s ease-out;
+}
+
+.addusrbtn {
+    background-color: black;
+    transition: .2s ease-out;
+
+}
+
+.addusrbtn:hover {
+    box-shadow: 9px 8px 12px 2px #111315;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  text-align: right;
+  width: 400px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenavcustom {padding-top: 10px;}
+  .sidenavcustom a {font-size: 14px;}
+}
+
+
+
+
+
+#mainpage {
+      transition: backdrop-filter .2s;
+
+}
+
+
+
+a:hover{
+    text-decoration:none;
+    color:white;
+}
+
+.front-heading {
+    font-size: 3.5em;
+    text-align: center;
+    font-family: system-ui;
+    font-weight: 900;
+    margin-top:2%;
+    color: black;
+
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    -webkit-transition: .3s ease-out;
+    transition: .3s ease-out;
+    }
+
+.btn-large {
+    height: 54px;
+    line-height: 54px;
+    font-size: 15px;
+    padding: 0 28px;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.btn-large:hover {
+    background-color: #2bbbad;
+}
+
+#loginModalLongTitle {
+    color: #5DADE2;
+    font-weight: 900;
+}
+
+#exampleModalLongTitle {
+    color: #E74C3C;
+    font-weight: 900;
+}
+
+
+.modal-body {
+    padding-left: 15%;
+}
+
+#login-modal-form{
+    margin: 10%;
+}
+.col-form-label-modal {
+    color: black;
+}
+
+
+
+.imagediv {
+    background-color: white;
+}
+
+
+.land-buttons {
+    background-color: #1C2833;
+}
+
+.land-buttons:focus {
+    background-color: #1C2833;
+}
+
+
+
+
+.jumbotron{
+    background-color: #3e3f4042;
+    border: 2px solid black;
+    display: flex;
+    opacity:0.99;
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    border-radius: 1.5rem;
+    box-shadow: 9px 8px 12px 2px #111315;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+
+}
+
+
+.graph-title {
+    text-align: center;
+}
+
+.form-container-dash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: inherit;
+    height: 8rem;
+    width: fit-content;
+
+}
+
+.dash-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.main-button {
+    margin: 10px;
+    width: 200px;
+}
+
+.status-text {
+    font-size: 16px;
+    text-align: center;
+    font-family: system-ui;
+    color: white;
+    margin-top:0.5%;
+    padding-left: 17%;
+    padding-right: 17%;
+
+}
+.anomaly {
+    background-color: #EC7063;
+    color: #721c24;
+    font-weight: 700;
+}
+
+.safe {
+    background-color: #48C9B0;
+    color: #0B5345;
+    font-weight: 700;
+}
+
+.status {
+    background-color: #566573;
+}
+
+
+.table {
+    color: white;
+    background-color: #3e3f4042;
+    backdrop-filter: blur(10px);
+    border-radius: 22px;
+}
+
+.table .zero-border{
+    border-top: 0px;
+}
+
+
+.btn-1  {
+    width: fit-content;
+}
+
+.btn-2  {
+    width: fit-content;
+}
+.sim-graph {
+    display: block;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3%;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.alert-content {
+    font-size: 1.05rem;
+    font-weight: 800;
+    text-align: center;
+}
+
