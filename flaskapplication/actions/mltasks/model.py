@@ -1,3 +1,12 @@
+
+######################################
+#                                    #
+# @author Amruth Sagar Kuppili       #
+# @university Dalhousie University   #
+# @ID B00844506                      #
+#                                    #
+######################################
+
 # import urllib.request
 # import zipfile
 # import io

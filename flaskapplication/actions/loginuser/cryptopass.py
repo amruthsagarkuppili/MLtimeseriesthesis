@@ -1,3 +1,13 @@
+
+######################################
+#                                    #
+# @author Amruth Sagar Kuppili       #
+# @university Dalhousie University   #
+# @ID B00844506                      #
+#                                    #
+######################################
+
+
 import base64
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA256

@@ -1,3 +1,12 @@
+
+######################################
+#                                    #
+# @author Amruth Sagar Kuppili       #
+# @university Dalhousie University   #
+# @ID B00844506                      #
+#                                    #
+######################################
+
 from dash import Dash
 import dash
 from dash.dependencies import Output, Input, State

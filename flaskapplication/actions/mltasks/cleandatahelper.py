@@ -1,4 +1,13 @@
 
+######################################
+#                                    #
+# @author Amruth Sagar Kuppili       #
+# @university Dalhousie University   #
+# @ID B00844506                      #
+#                                    #
+######################################
+
+
 from flaskapplication.actions.mltasks.variables import directoryloc,predloc,ECCClink,SMAlink, timestepsmodel
 from flaskapplication.actions.mltasks.pulldatahelper import pullinformation
 

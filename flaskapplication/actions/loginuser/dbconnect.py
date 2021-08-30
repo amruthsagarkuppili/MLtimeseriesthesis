@@ -1,4 +1,13 @@
 from mysql.connector import connect, Error
+
+######################################
+#                                    #
+# @author Amruth Sagar Kuppili       #
+# @university Dalhousie University   #
+# @ID B00844506                      #
+#                                    #
+######################################
+
 from flaskapplication.actions.loginuser.validateuser import uservalidate
 
 class DBconnection:

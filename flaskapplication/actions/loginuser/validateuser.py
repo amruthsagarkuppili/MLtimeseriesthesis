@@ -1,3 +1,11 @@
+######################################
+#                                    #
+# @author Amruth Sagar Kuppili       #
+# @university Dalhousie University   #
+# @ID B00844506                      #
+#                                    #
+######################################
+
 from mysql.connector import  Error
 class uservalidate:
 

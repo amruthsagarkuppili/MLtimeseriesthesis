@@ -1,3 +1,12 @@
+
+######################################
+#                                    #
+# @author Amruth Sagar Kuppili       #
+# @university Dalhousie University   #
+# @ID B00844506                      #
+#                                    #
+######################################
+
 from flaskapplication.actions.mltasks.cleandatahelper import cleandata
 from flaskapplication.actions.mltasks.trainingmodelhelper import training
 from flaskapplication.actions.mltasks.predictionhelper import prediction

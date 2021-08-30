@@ -1,3 +1,12 @@
+
+######################################
+#                                    #
+# @author Amruth Sagar Kuppili       #
+# @university Dalhousie University   #
+# @ID B00844506                      #
+#                                    #
+######################################
+
 import pickle
 import numpy as np
 import math

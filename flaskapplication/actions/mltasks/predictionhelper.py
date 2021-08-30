@@ -1,4 +1,12 @@
 
+######################################
+#                                    #
+# @author Amruth Sagar Kuppili       #
+# @university Dalhousie University   #
+# @ID B00844506                      #
+#                                    #
+######################################
+
 from os import path
 import numpy as np
 import pandas as pd
